@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0055)http://mezzanine.jupo.org/docs/model-customization.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>Model Customization — Mezzanine 4.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="./Model Customization — Mezzanine 4.2.0 documentation_files/mezzanine.css" type="text/css">
+    <link rel="stylesheet" href="./Model Customization — Mezzanine 4.2.0 documentation_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript" async="" src="./Model Customization — Mezzanine 4.2.0 documentation_files/ga.js"></script><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '4.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./Model Customization — Mezzanine 4.2.0 documentation_files/jquery.js"></script>
+    <script type="text/javascript" src="./Model Customization — Mezzanine 4.2.0 documentation_files/underscore.js"></script>
+    <script type="text/javascript" src="./Model Customization — Mezzanine 4.2.0 documentation_files/doctools.js"></script>
+    <link rel="top" title="Mezzanine 4.2.0 documentation" href="http://mezzanine.jupo.org/docs/index.html">
+    <link rel="next" title="Admin Customization" href="http://mezzanine.jupo.org/docs/admin-customization.html">
+    <link rel="prev" title="Content Architecture" href="http://mezzanine.jupo.org/docs/content-architecture.html">
+ 
+<meta name="viewport" content="width=device-width">
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://mezzanine.jupo.org/docs/genindex.html" title="General Index" accesskey="I">index</a></li>
+        <li class="right">
+          <a href="http://mezzanine.jupo.org/docs/py-modindex.html" title="Python Module Index">modules</a> |</li>
+        <li class="right">
+          <a href="http://mezzanine.jupo.org/docs/admin-customization.html" title="Admin Customization" accesskey="N">next</a> |</li>
+        <li class="right">
+          <a href="http://mezzanine.jupo.org/docs/content-architecture.html" title="Content Architecture" accesskey="P">previous</a> |</li>
+        <li><a href="http://mezzanine.jupo.org/docs/index.html">Mezzanine 4.2.0 documentation</a> »</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="model-customization">
+<h1>Model Customization<a class="headerlink" href="http://mezzanine.jupo.org/docs/model-customization.html#model-customization" title="Permalink to this headline">¶</a></h1>
+<p>So far under <a class="reference internal" href="http://mezzanine.jupo.org/docs/content-architecture.html"><em>Content Architecture</em></a> the concept of subclassing
+Mezzanine’s models has been described. This section describes the hooks
+Mezzanine provides for directly modifying the behaviour of its models.</p>
+<div class="section" id="field-injection">
+<h2>Field Injection<a class="headerlink" href="http://mezzanine.jupo.org/docs/model-customization.html#field-injection" title="Permalink to this headline">¶</a></h2>
+<p>Mezzanine provides the setting <a class="reference internal" href="http://mezzanine.jupo.org/docs/configuration.html#extra-model-fields"><em>EXTRA_MODEL_FIELDS</em></a> which allows you
+to define a sequence of fields that will be injected into Mezzanine’s
+(or any library’s) models.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Using the following approach comes with certain trade-offs
+described below in <a class="reference internal" href="http://mezzanine.jupo.org/docs/model-customization.html#field-injection-caveats"><em>Field Injection Caveats</em></a>. Be sure to fully
+understand these prior to using the <a class="reference internal" href="http://mezzanine.jupo.org/docs/configuration.html#extra-model-fields"><em>EXTRA_MODEL_FIELDS</em></a> setting.</p>
+</div>
+<p>Each item in the <a class="reference internal" href="http://mezzanine.jupo.org/docs/configuration.html#extra-model-fields"><em>EXTRA_MODEL_FIELDS</em></a> sequence is a four item
+sequence. The first two items are the dotted path to the model and its
+field name to be added, and the dotted path to the field class to use
+for the field. The third and fourth items are a sequence of positional
+args and a dictionary of keyword args, to use when creating the field
+instance.</p>
+<p>For example suppose you want to inject a custom <tt class="docutils literal"><span class="pre">ImageField</span></tt> from a
+third party library into Mezzanine’s <a class="reference internal" href="http://mezzanine.jupo.org/docs/packages.html#mezzanine.blog.models.BlogPost" title="mezzanine.blog.models.BlogPost"><tt class="xref py py-class docutils literal"><span class="pre">BlogPost</span></tt></a> model, you would
+define the following in your project’s settings module:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">EXTRA_MODEL_FIELDS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c"># Four-item sequence for one field injected.</span>
+    <span class="p">(</span>
+        <span class="c"># Dotted path to field.</span>
+        <span class="s">"mezzanine.blog.models.BlogPost.image"</span><span class="p">,</span>
+        <span class="c"># Dotted path to field class.</span>
+        <span class="s">"somelib.fields.ImageField"</span><span class="p">,</span>
+        <span class="c"># Positional args for field class.</span>
+        <span class="p">(</span><span class="s">"Image"</span><span class="p">,),</span>
+        <span class="c"># Keyword args for field class.</span>
+        <span class="p">{</span><span class="s">"blank"</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">"upload_to"</span><span class="p">:</span> <span class="s">"blog"</span><span class="p">},</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Each <a class="reference internal" href="http://mezzanine.jupo.org/docs/packages.html#mezzanine.blog.models.BlogPost" title="mezzanine.blog.models.BlogPost"><tt class="xref py py-class docutils literal"><span class="pre">BlogPost</span></tt></a> instance will now have an <tt class="docutils literal"><span class="pre">image</span></tt> attribute, using the
+<tt class="docutils literal"><span class="pre">ImageField</span></tt> class defined in the fictitious <tt class="docutils literal"><span class="pre">somelib.fields</span></tt> module.</p>
+<p>Another interesting example would be adding a field to all of Mezzanine’s
+content types by injecting fields into the <a class="reference internal" href="http://mezzanine.jupo.org/docs/packages.html#mezzanine.pages.models.Page" title="mezzanine.pages.models.Page"><tt class="xref py py-class docutils literal"><span class="pre">Page</span></tt></a> class. Continuing on
+from the previous example, suppose you wanted to add a regular Django
+<tt class="docutils literal"><span class="pre">IntegerField</span></tt> to all content types:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">EXTRA_MODEL_FIELDS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span>
+        <span class="s">"mezzanine.blog.models.BlogPost.image"</span><span class="p">,</span>
+        <span class="s">"somelib.fields.ImageField"</span><span class="p">,</span>
+        <span class="p">(</span><span class="s">"Image"</span><span class="p">,),</span>
+        <span class="p">{</span><span class="s">"blank"</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">"upload_to"</span><span class="p">:</span> <span class="s">"blog"</span><span class="p">},</span>
+    <span class="p">),</span>
+    <span class="c"># Example of adding a field to *all* of Mezzanine's content types:</span>
+    <span class="p">(</span>
+        <span class="s">"mezzanine.pages.models.Page.another_field"</span><span class="p">,</span>
+        <span class="s">"IntegerField"</span><span class="p">,</span> <span class="c"># 'django.db.models.' is implied if path is omitted.</span>
+        <span class="p">(</span><span class="s">"Another name"</span><span class="p">,),</span>
+        <span class="p">{</span><span class="s">"blank"</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">"default"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Note here that the full path for the field class isn’t required since a
+regular Django field is used - the <tt class="docutils literal"><span class="pre">django.db.models.</span></tt> path is implied.</p>
+</div>
+<div class="section" id="field-injection-caveats">
+<span id="id1"></span><h2>Field Injection Caveats<a class="headerlink" href="http://mezzanine.jupo.org/docs/model-customization.html#field-injection-caveats" title="Permalink to this headline">¶</a></h2>
+<p>The above technique provides a great way of avoiding the performance
+penalties of SQL JOINS required by the traditional approach of
+<a class="reference external" href="https://docs.djangoproject.com/en/1.3/topics/db/models/#multi-table-inheritance">subclassing models</a>,
+however some extra consideration is required when used with the
+migrations management commands included in Django starting from
+version 1.7. In the first example above, Django’s <tt class="docutils literal"><span class="pre">makemigrations</span></tt>
+command views the new <tt class="docutils literal"><span class="pre">image</span></tt> field on the
+<a class="reference internal" href="http://mezzanine.jupo.org/docs/packages.html#mezzanine.blog.models.BlogPost" title="mezzanine.blog.models.BlogPost"><tt class="xref py py-class docutils literal"><span class="pre">BlogPost</span></tt></a> model of the <a class="reference internal" href="http://mezzanine.jupo.org/docs/packages.html#module-mezzanine.blog" title="mezzanine.blog"><tt class="xref py py-mod docutils literal"><span class="pre">mezzanine.blog</span></tt></a> app. As such, in order to
+create a migration for it, the migration must be created for the blog
+app itself and by default would end up in the migrations directory of
+the blog app, which completely goes against the notion of not
+modifying the blog app to add your own custom fields.</p>
+<p>One approach to address this is to use Django’s
+<a class="reference external" href="https://docs.djangoproject.com/en/1.8/ref/settings/#std:setting-MIGRATION_MODULES">MIGRATION_MODULES</a>
+setting and locate your own migration files somewhere in your project
+or app. However, if you define a custom directory to store migrations
+for an app with injected field (e.g: <tt class="docutils literal"><span class="pre">pages</span></tt> in the second example
+above), make sure to do the same for apps that define models that are
+subclasses of the one you are injecting fields into. Failing to do so
+will result in broken dependencies for migration files.</p>
+<p>The configuration for the second example should containt at least
+something that looks like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">MIGRATION_MODULES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"pages"</span><span class="p">:</span> <span class="s">"path.to.migration.storage.pages_migration"</span><span class="p">,</span>
+    <span class="s">"forms"</span><span class="p">:</span> <span class="s">"path.to.migration.storage.forms_migration"</span><span class="p">,</span>
+    <span class="s">"galleries"</span><span class="p">:</span> <span class="s">"path.to.migration.storage.galleries_migration"</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To create the new migration files and apply the changes, simply run:</p>
+<div class="highlight-python"><pre>$ python manage.py makemigrations
+$ python manage.py migrate</pre>
+</div>
+<p>Be warned that over time this approach will almost certainly require
+some manual intervention by way of editing migrations, or modifying
+the database manually to create the correct state. Ultimately there is
+a trade-off involved here.</p>
+</div>
+<div class="section" id="admin-fields">
+<h2>Admin Fields<a class="headerlink" href="http://mezzanine.jupo.org/docs/model-customization.html#admin-fields" title="Permalink to this headline">¶</a></h2>
+<p>Whether using the above approach to inject fields into models, or
+taking the more traditional approach of subclassing models, most
+often you will also want to expose new fields to the admin interface.
+This can be achieved by simply unregistering the relevant admin class,
+subclassing it, and re-registering your new admin class for the
+associated model. Continuing on from the first example, the code below
+takes a copy of the <tt class="xref py py-attr docutils literal"><span class="pre">fieldsets</span></tt> definition for the original
+<a class="reference internal" href="http://mezzanine.jupo.org/docs/packages.html#mezzanine.blog.admin.BlogPostAdmin" title="mezzanine.blog.admin.BlogPostAdmin"><tt class="xref py py-class docutils literal"><span class="pre">BlogPostAdmin</span></tt></a>, and injects our custom field’s name into the
+desired position.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># In myapp/admin.py</span>
+
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">mezzanine.blog.admin</span> <span class="kn">import</span> <span class="n">BlogPostAdmin</span>
+<span class="kn">from</span> <span class="nn">mezzanine.blog.models</span> <span class="kn">import</span> <span class="n">BlogPost</span>
+
+<span class="n">blog_fieldsets</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">BlogPostAdmin</span><span class="o">.</span><span class="n">fieldsets</span><span class="p">)</span>
+<span class="n">blog_fieldsets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s">"fields"</span><span class="p">]</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s">"image"</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">MyBlogPostAdmin</span><span class="p">(</span><span class="n">BlogPostAdmin</span><span class="p">):</span>
+    <span class="n">fieldsets</span> <span class="o">=</span> <span class="n">blog_fieldsets</span>
+
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span><span class="n">BlogPost</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">BlogPost</span><span class="p">,</span> <span class="n">MyBlogPostAdmin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="http://mezzanine.jupo.org/docs/index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="http://mezzanine.jupo.org/docs/model-customization.html#">Model Customization</a><ul>
+<li><a class="reference internal" href="http://mezzanine.jupo.org/docs/model-customization.html#field-injection">Field Injection</a></li>
+<li><a class="reference internal" href="http://mezzanine.jupo.org/docs/model-customization.html#field-injection-caveats">Field Injection Caveats</a></li>
+<li><a class="reference internal" href="http://mezzanine.jupo.org/docs/model-customization.html#admin-fields">Admin Fields</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="http://mezzanine.jupo.org/docs/content-architecture.html" title="previous chapter">Content Architecture</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="http://mezzanine.jupo.org/docs/admin-customization.html" title="next chapter">Admin Customization</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="http://mezzanine.jupo.org/docs/_sources/model-customization.txt" rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="">
+  <h3>Quick search</h3>
+    <form class="search" action="http://mezzanine.jupo.org/docs/search.html" method="get">
+      <input type="text" name="q">
+      <input type="submit" value="Go">
+      <input type="hidden" name="check_keywords" value="yes">
+      <input type="hidden" name="area" value="default">
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://mezzanine.jupo.org/docs/genindex.html" title="General Index">index</a></li>
+        <li class="right">
+          <a href="http://mezzanine.jupo.org/docs/py-modindex.html" title="Python Module Index">modules</a> |</li>
+        <li class="right">
+          <a href="http://mezzanine.jupo.org/docs/admin-customization.html" title="Admin Customization">next</a> |</li>
+        <li class="right">
+          <a href="http://mezzanine.jupo.org/docs/content-architecture.html" title="Content Architecture">previous</a> |</li>
+        <li><a href="http://mezzanine.jupo.org/docs/index.html">Mezzanine 4.2.0 documentation</a> »</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        © Copyright 2009 - 2016, Stephen McDonald.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+<script>
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-52596-12']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+$(function() {
+    $('a.reference[href^="configuration.html"] span').addClass('pre');
+});
+
+</script>
+
+  
+</body></html>
