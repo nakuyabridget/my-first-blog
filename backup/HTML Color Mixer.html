@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://www.w3schools.com/colors/colors_converter.asp -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Color Converter</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Keywords" content="HTML,CSS,JavaScript,SQL,PHP,jQuery,XML,DOM,Bootstrap,Web development,W3C,tutorials,programming,training,learning,quiz,primer,lessons,references,examples,source code,colors,demos,tips">
+<meta name="Description" content="Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, PHP, and XML.">
+<link rel="icon" href="http://www.w3schools.com/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="./HTML Color Mixer_files/w3.css">
+<script type="text/javascript" async="" src="./HTML Color Mixer_files/cse.js"></script><script async="" type="text/javascript" src="./HTML Color Mixer_files/gpt.js"></script><script async="" src="./HTML Color Mixer_files/analytics.js"></script><script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-3855518-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+<script type="text/javascript">
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script>
+<script type="text/javascript">
+// GPT slots
+var gptAdSlots = [];
+googletag.cmd.push(function() {
+var leaderMapping = googletag.sizeMapping().
+// Mobile ad
+addSize([0, 0], [320, 50]). 
+// Vertical Tablet ad
+addSize([480, 0], [468, 60]). 
+// Horizontal Tablet
+addSize([750, 0], [728, 90]).
+// Small Desktop
+addSize([993, 0], [468, 60]).
+// Normal Desktop
+addSize([1135, 0], [728, 90]).
+// Large Desktop and bigger ad
+addSize([1425, 0], [[728, 90], [970, 90]]).build();
+gptAdSlots[0] = googletag.defineSlot('/16833175/MainLeaderboard', [[728, 90], [970, 90]], 'div-gpt-ad-1422003450156-2').
+defineSizeMapping(leaderMapping).addService(googletag.pubads());
+var skyMapping = googletag.sizeMapping().
+// Mobile ad
+addSize([0, 0], [320, 50]). 
+// Tablet ad
+addSize([975, 0], [120, 600]). 
+// Desktop
+addSize([1135, 0], [160, 600]).   
+// Large Desktop
+addSize([1675, 0], [[160, 600], [300, 600], [300, 1050]]).build();
+gptAdSlots[1] = googletag.defineSlot('/16833175/WideSkyScraper', [[160, 600], [300, 600], [300, 1050]], 'div-gpt-ad-1422003450156-5').
+defineSizeMapping(skyMapping).addService(googletag.pubads());
+var stickyMapping = googletag.sizeMapping().
+// Mobile ad
+addSize([0, 0], []). 
+// Tablet ad
+addSize([975, 0], [120, 600]). 
+// Desktop
+addSize([1135, 0], [160, 600]).   
+// Large Desktop
+addSize([1675, 0], [[160, 600], [300, 600], [300, 250]]).build();
+gptAdSlots[4] = googletag.defineSlot('/16833175/StickySkyScraper', [[300, 600], [120, 600], [300, 250], [160, 600]], 'div-gpt-ad-1472547360578-0').
+defineSizeMapping(stickyMapping).addService(googletag.pubads());
+var bmrMapping = googletag.sizeMapping().
+// Smaller
+addSize([0, 0], [[300, 250], [336, 280]]). 
+// Large Desktop
+addSize([1200, 0], [[300, 250], [336, 280], [970, 250]]).build();
+gptAdSlots[2] = googletag.defineSlot('/16833175/BottomMediumRectangle', [[300, 250], [336, 280], [970, 250]], 'div-gpt-ad-1422003450156-0').
+defineSizeMapping(bmrMapping).setCollapseEmptyDiv(true).addService(googletag.pubads());
+var rbmrMapping = googletag.sizeMapping().
+// Smaller
+addSize([0, 0], []). 
+// Large Desktop
+addSize([975, 0], [[300, 250], [336, 280]]).build();
+gptAdSlots[3] = googletag.defineSlot('/16833175/RightBottomMediumRectangle', [[300, 250], [336, 280]], 'div-gpt-ad-1422003450156-3').
+defineSizeMapping(rbmrMapping).setCollapseEmptyDiv(true).addService(googletag.pubads());
+googletag.pubads().setTargeting("content",(function () {
+  var folder = location.pathname;
+  folder = folder.replace("/", "");
+  folder = folder.substr(0, folder.indexOf("/"));
+  return folder;
+})()
+);
+googletag.enableServices();
+});
+</script>
+<script>
+var stickyadstatus = "";
+function fix_stickyad() {
+  var elem = document.getElementById("stickyadcontainer");
+  var skyWidth = Number(w3_getStyleValue(document.getElementById("skyscraper"), "width").replace("px", ""));  
+  elem.style.width = skyWidth + "px";
+  if (window.innerWidth <= 992) {
+    elem.style.position = "";
+    elem.style.top = stickypos + "px";
+    return false;
+  }
+  var stickypos = document.getElementById("stickypos").offsetTop;
+  var docTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+  var adHeight = Number(w3_getStyleValue(elem, "height").replace("px", ""));
+  if (stickyadstatus == "") {
+    if ((stickypos - docTop) < 60) {
+      elem.style.position = "fixed";
+      elem.style.top = "60px";
+      stickyadstatus = "sticky";
+    }
+  } else {
+    if ((docTop + 60) - stickypos < 0) {  
+      elem.style.position = "";
+      elem.style.top = stickypos + "px";
+      stickyadstatus = "";
+    }
+  }
+  if (stickyadstatus == "sticky") {
+    if ((docTop + adHeight + 60) > document.getElementById("footer").offsetTop) {
+      elem.style.position = "absolute";
+      elem.style.top = (document.getElementById("footer").offsetTop - adHeight) + "px";
+    } else {
+        elem.style.position = "fixed";
+        elem.style.top = "60px";
+        stickyadstatus = "sticky";
+    }
+  }
+}
+function w3_getStyleValue(elmnt,style) {
+  if (window.getComputedStyle) {
+    return window.getComputedStyle(elmnt,null).getPropertyValue(style);
+  } else {
+    return elmnt.currentStyle[style];
+  }
+}
+</script>
+<link rel="stylesheet" href="./HTML Color Mixer_files/stdtheme.css">
+<style>
+.resultStrings {
+    font-family:Consolas, "Courier New", Courier, monospace;
+    font-size:17px;
+}
+#name01,#hex01,#rgb01,#hsl01,#hwb01,#cmyk01,#ncol01 {
+    white-space:nowrap;
+    background-color:#f9f9f9;
+    background-color:#ffffff;    
+    border:1px solid #d3d3d3;
+    padding-left:4px;
+}
+#helpname01,#helphex01,#helprgb01,#helphsl01,#helphwb01,#helpcmyk01,#helpncol01,#helpasterix {
+    width:60px;
+    color:#757575;
+    font-style:italic;
+}
+#behindresult01 {
+    background-image:url(img_bg_eyeicon.png), url(img_bg_transparent.gif);
+    background-repeat:no-repeat, repeat;background-position:center, top left;
+    background-color:#ffffff;
+}
+#resultTable {
+    border-collapse:separate;
+    border-spacing:2px;
+    width:100%;
+}
+/*input[type=search]::-webkit-search-cancel-button{-webkit-appearance:searchfield-cancel-button;}*/
+
+</style>
+<script src="http://www.w3schools.com/lib/w3color.js"></script>
+<script src="./HTML Color Mixer_files/pubads_impl_95.js" async=""></script><link rel="prefetch" href="http://tpc.googlesyndication.com/safeframe/1-0-4/html/container.html"><link type="text/css" rel="stylesheet" charset="UTF-8" href="./HTML Color Mixer_files/translateelement.css"><script type="text/javascript" charset="UTF-8" src="./HTML Color Mixer_files/main.js"></script><script type="text/javascript" charset="UTF-8" src="./HTML Color Mixer_files/element_main.js"></script></head>
+<body>
+<style>
+.topnav .w3-navbar {
+  background-color:#5f5f5f;
+}
+.topnav li a:hover{
+ background-color:#000000;
+ color:#ffffff;
+}
+.topnav li a.active {
+ display:inline-block;
+}
+.w3-dropnav {
+ margin-top:44px;
+}
+</style>
+
+<div class="w3-container top">
+  <a class="w3schools-logo" href="http://www.w3schools.com/">w3schools<span class="dotcom">.com</span></a>
+  <div class="w3-right w3-hide-small w3-wide toptext">THE WORLD'S LARGEST WEB DEVELOPER SITE</div>
+</div>
+
+<div style="display:none;position:absolute;z-index:4;right:52px;height:44px;background-color:#5f5f5f;letter-spacing:normal;" id="googleSearch">
+  <div class="gcse-search"></div>
+</div>
+<div style="display:none;position:absolute;z-index:3;right:111px;height:44px;background-color:#5f5f5f;text-align:right;padding-top:9px;" id="google_translate_element"></div>
+
+<div class="w3-card-2 w3-slim topnav" id="topnav">
+  <div style="overflow:auto;">
+    <ul class="w3-navbar w3-left" style="width:50%;overflow:hidden;height:44px">
+      <li><a href="javascript:void(0);" class="topnav-localicons w3-hide-large w3-left" onclick="open_menu()" title="Menu">☰</a></li>
+      <li><a href="http://www.w3schools.com/default.asp" class="topnav-icons fa fa-home w3-left" title="Home"></a></li>
+      <li><a href="http://www.w3schools.com/html/default.asp" class="w3-hide-small" title="HTML Tutorial">HTML</a></li>
+      <li><a href="http://www.w3schools.com/css/default.asp" class="w3-hide-small" title="CSS Tutorial">CSS</a></li>
+      <li><a href="http://www.w3schools.com/js/default.asp" class="w3-hide-small" title="JavaScript Tutorial">JAVASCRIPT</a></li>
+      <li><a href="http://www.w3schools.com/sql/default.asp" class="w3-hide-small" title="SQL Tutorial">SQL</a></li>
+      <li><a href="http://www.w3schools.com/php/default.asp" class="w3-hide-small" title="PHP Tutorial">PHP</a></li>
+      <li><a href="http://www.w3schools.com/bootstrap/default.asp" class="w3-hide-small" title="Bootstrap Tutorial">BOOTSTRAP</a></li>
+      <li><a href="http://www.w3schools.com/jquery/default.asp" class="w3-hide-small" title="jQuery Tutorial">JQUERY</a></li>
+      <li><a href="http://www.w3schools.com/angular/default.asp" class="w3-hide-small" title="Angular Tutorial">ANGULAR</a></li>
+      <li><a href="http://www.w3schools.com/xml/default.asp" class="w3-hide-small w3-hide-medium" title="XML Tutorial">XML</a></li>
+    </ul>
+    <ul class="w3-navbar w3-right" style="width:110px;overflow:hidden;height:44px">
+      <li class="w3-right"><a href="javascript:void(0);" class="topnav-icons fa w3-right" onclick="open_search(this)" title="Search W3Schools"></a></li>
+      <li class="w3-right"><a href="javascript:void(0);" class="topnav-icons fa w3-right" onclick="open_translate(this)" title="Translate W3Schools"></a></li>
+    </ul>
+    <ul class="w3-navbar w3-right w3-hide-small" style="width:30%;overflow:hidden;height:44px">
+      <li><a id="topnavbtn_tutorials" href="javascript:void(0);" onclick="w3_open_nav(&quot;tutorials&quot;)" title="Tutorials">TUTORIALS <i class="fa fa-caret-down"></i><i class="fa fa-caret-up" style="display:none"></i></a></li>
+      <li class="w3-hide-medium"><a id="topnavbtn_references" href="javascript:void(0);" onclick="w3_open_nav(&quot;references&quot;)" title="References">REFERENCES <i class="fa fa-caret-down"></i><i class="fa fa-caret-up" style="display:none"></i></a></li>
+      <li class="w3-hide-medium"><a id="topnavbtn_examples" href="javascript:void(0);" onclick="w3_open_nav(&quot;examples&quot;)" title="Examples">EXAMPLES <i class="fa fa-caret-down"></i><i class="fa fa-caret-up" style="display:none"></i></a></li>
+      <li class="w3-hide-medium"><a href="http://www.w3schools.com/forum/default.asp">FORUM</a></li>
+    </ul>
+
+    <div id="nav_tutorials" class="w3-dropnav w3-light-grey w3-card-2">
+      <span onclick="w3_close_nav(&quot;tutorials&quot;)" class="w3-closebtn w3-xlarge w3-hover-text-grey">×</span>
+      <br>
+      <div class="w3-row-padding">
+        <div class="w3-col m4">
+          <h3>HTML and CSS</h3>
+          <a href="http://www.w3schools.com/html/default.asp">Learn HTML</a>
+          <a href="http://www.w3schools.com/css/default.asp">Learn CSS</a>
+          <a href="http://www.w3schools.com/w3css/default.asp">Learn W3.CSS</a>
+          <a href="http://www.w3schools.com/colors/default.asp">Learn Colors</a>
+          <a href="http://www.w3schools.com/bootstrap/default.asp">Learn Bootstrap</a>
+          <a href="http://www.w3schools.com/graphics/default.asp">Learn Graphics</a>
+          <a href="http://www.w3schools.com/icons/default.asp">Learn Icons</a>
+          <a href="http://www.w3schools.com/howto/default.asp">Learn How To</a>
+        </div>
+        <div class="w3-col m4">  
+          <h3>JavaScript</h3>
+          <a href="http://www.w3schools.com/js/default.asp">Learn JavaScript</a>
+          <a href="http://www.w3schools.com/jquery/default.asp">Learn jQuery</a>
+          <a href="http://www.w3schools.com/jquerymobile/default.asp">Learn jQueryMobile</a>
+          <a href="http://www.w3schools.com/appml/default.asp">Learn AppML</a>
+          <a href="http://www.w3schools.com/angular/default.asp">Learn AngularJS</a>
+          <a href="http://www.w3schools.com/json/default.asp">Learn JSON</a>
+          <a href="http://www.w3schools.com/ajax/default.asp">Learn AJAX</a>
+          <h3>XML</h3>
+          <a href="http://www.w3schools.com/xml/default.asp">Learn XML</a>
+          <a href="http://www.w3schools.com/xsl/default.asp">Learn XSLT</a>
+          <a href="http://www.w3schools.com/xsl/xpath_intro.asp">Learn XPath</a>
+          <a href="http://www.w3schools.com/xsl/xquery_intro.asp">Learn XQuery</a>
+        </div>
+        <div class="w3-col m4">
+          <h3>Server Side</h3>
+          <a href="http://www.w3schools.com/sql/default.asp">Learn SQL</a>
+          <a href="http://www.w3schools.com/php/default.asp">Learn PHP</a>
+          <a href="http://www.w3schools.com/asp/default.asp">Learn ASP</a>
+          <h3>Web Building</h3>
+          <a href="http://www.w3schools.com/w3css/w3css_templates.asp">Web Templates</a>
+          <a href="http://www.w3schools.com/browsers/default.asp">Web Statistics</a>
+          <a href="http://www.w3schools.com/cert/default.asp">Web Certificates</a>
+        </div>
+      </div>
+      <br>
+    </div>
+    <div id="nav_references" class="w3-dropnav w3-light-grey w3-card-2">
+      <span onclick="w3_close_nav(&quot;references&quot;)" class="w3-closebtn w3-xlarge w3-hover-text-grey">×</span>
+      <br>
+      <div class="w3-row-padding">
+        <div class="w3-col m4">
+          <h3>HTML</h3>
+          <a href="http://www.w3schools.com/tags/default.asp">HTML Tag Reference</a>
+          <a href="http://www.w3schools.com/tags/ref_eventattributes.asp">HTML Event Reference</a>
+          <a href="http://www.w3schools.com/colors/default.asp">HTML Color Reference</a>
+          <a href="http://www.w3schools.com/tags/ref_attributes.asp">HTML Attribute Reference</a>
+          <a href="http://www.w3schools.com/tags/ref_canvas.asp">HTML Canvas Reference</a>
+          <a href="http://www.w3schools.com/graphics/svg_reference.asp">HTML SVG Reference</a>
+          <a href="http://www.w3schools.com/graphics/google_maps_reference.asp">Google Maps Reference</a>
+          <h3>CSS</h3>
+          <a href="http://www.w3schools.com/cssref/default.asp">CSS Reference</a>
+          <a href="http://www.w3schools.com/cssref/css_selectors.asp">CSS Selector Reference</a>
+          <a href="http://www.w3schools.com/w3css/w3css_references.asp">W3.CSS Reference</a>
+          <a href="http://www.w3schools.com/bootstrap/bootstrap_ref_css_text.asp">Bootstrap Reference</a>
+        </div>
+        <div class="w3-col m4">
+          <h3>JavaScript</h3>
+          <a href="http://www.w3schools.com/jsref/default.asp">JavaScript Reference</a>
+          <a href="http://www.w3schools.com/jsref/default.asp">HTML DOM Reference</a>
+          <a href="http://www.w3schools.com/jquery/jquery_ref_selectors.asp">jQuery Reference</a>
+          <a href="http://www.w3schools.com/jquerymobile/jquerymobile_ref_data.asp">jQuery Mobile Reference</a>
+          <a href="http://www.w3schools.com/angular/angular_ref_directives.asp">AngularJS Reference</a>
+          <h3>XML</h3>
+          <a href="http://www.w3schools.com/xml/dom_nodetype.asp">XML Reference</a>
+          <a href="http://www.w3schools.com/xsl/xsl_w3celementref.asp">XSLT Reference</a>
+          <a href="http://www.w3schools.com/xml/schema_elements_ref.asp">XML Schema Reference</a>
+        </div>
+        <div class="w3-col m4">
+          <h3>Charsets</h3>
+          <a href="http://www.w3schools.com/charsets/default.asp">HTML Character Sets</a>
+          <a href="http://www.w3schools.com/charsets/ref_html_ascii.asp">HTML ASCII</a>
+          <a href="http://www.w3schools.com/charsets/ref_html_ansi.asp">HTML ANSI</a>
+          <a href="http://www.w3schools.com/charsets/ref_html_ansi.asp">HTML Windows-1252</a>
+          <a href="http://www.w3schools.com/charsets/ref_html_8859.asp">HTML ISO-8859-1</a>
+          <a href="http://www.w3schools.com/charsets/ref_html_symbols.asp">HTML Symbols</a>
+          <a href="http://www.w3schools.com/charsets/ref_html_utf8.asp">HTML UTF-8</a>
+          <h3>Server Side</h3>
+          <a href="http://www.w3schools.com/php/php_ref_array.asp">PHP Reference</a>
+          <a href="http://www.w3schools.com/sql/sql_quickref.asp">SQL Reference</a>
+          <a href="http://www.w3schools.com/asp/asp_ref_response.asp">ASP Reference</a>
+        </div>
+      </div>
+      <br>
+    </div>
+    <div id="nav_examples" class="w3-dropnav w3-light-grey w3-card-2">
+      <span onclick="w3_close_nav(&quot;examples&quot;)" class="w3-closebtn w3-xlarge w3-hover-text-grey">×</span>
+      <br>
+      <div class="w3-row-padding">
+        <div class="w3-col m4">
+          <h3>HTML/CSS</h3>
+          <a href="http://www.w3schools.com/html/html_examples.asp">HTML Examples</a>
+          <a href="http://www.w3schools.com/css/css_examples.asp">CSS Examples</a>
+          <a href="http://www.w3schools.com/w3css/w3css_examples.asp">W3.CSS Examples</a>
+          <h3>JavaScript</h3>
+          <a href="http://www.w3schools.com/js/js_examples.asp" target="_top">JavaScript Examples</a>
+          <a href="http://www.w3schools.com/js/js_dom_examples.asp" target="_top">HTML DOM Examples</a>
+          <a href="http://www.w3schools.com/jquery/jquery_examples.asp" target="_top">jQuery Examples</a>
+          <a href="http://www.w3schools.com/jquerymobile/jquerymobile_examples.asp" target="_top">jQuery Mobile Examples</a>
+          <a href="http://www.w3schools.com/angular/angular_examples.asp" target="_top">AngularJS Examples</a>
+          <a href="http://www.w3schools.com/ajax/ajax_examples.asp" target="_top">AJAX Examples</a>
+        </div>
+        <div class="w3-col m4">
+          <h3>XML</h3>
+          <a href="http://www.w3schools.com/xml/xml_examples.asp" target="_top">XML Examples</a>
+          <a href="http://www.w3schools.com/xsl/xsl_examples.asp" target="_top">XSL Examples</a>
+          <a href="http://www.w3schools.com/xsl/xsl_examples.asp" target="_top">XSLT Examples</a>
+          <a href="http://www.w3schools.com/xsl/xpath_examples.asp" target="_top">XPath Examples</a>
+          <a href="http://www.w3schools.com/xml/schema_example.asp" target="_top">XML Schema Examples</a>
+          <a href="http://www.w3schools.com/graphics/svg_examples.asp" target="_top">SVG Examples</a>
+          <h3>Server Side</h3>
+          <a href="http://www.w3schools.com/php/php_examples.asp" target="_top">PHP Examples</a>
+          <a href="http://www.w3schools.com/asp/asp_examples.asp" target="_top">ASP Examples</a>
+        </div>
+        <div class="w3-col m4">
+          <h3>Quizzes</h3>
+          <a href="http://www.w3schools.com/quiztest/quiztest.asp?Qtest=HTML" target="_top">HTML Quiz</a>
+          <a href="http://www.w3schools.com/quiztest/quiztest.asp?Qtest=CSS" target="_top">CSS Quiz</a>
+          <a href="http://www.w3schools.com/quiztest/quiztest.asp?Qtest=JavaScript" target="_top">JavaScript Quiz</a>
+          <a href="http://www.w3schools.com/quiztest/quiztest.asp?Qtest=Bootstrap" target="_top">Bootstrap Quiz</a>
+          <a href="http://www.w3schools.com/quiztest/quiztest.asp?Qtest=jQuery" target="_top">jQuery Quiz</a>
+          <a href="http://www.w3schools.com/quiztest/quiztest.asp?Qtest=PHP" target="_top">PHP Quiz</a>
+          <a href="http://www.w3schools.com/quiztest/quiztest.asp?Qtest=SQL" target="_top">SQL Quiz</a>
+          <a href="http://www.w3schools.com/quiztest/quiztest.asp?Qtest=XML" target="_top">XML Quiz</a>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
+
+<div class="w3-sidenav w3-collapse w3-slim" id="sidenav">
+  <div id="leftmenuinner">
+    <div class="w3-light-grey" id="leftmenuinnerinner">
+      <a href="javascript:void(0)" onclick="close_menu()" class="w3-closebtn w3-hide-large w3-large" style="padding:3px 12px;">×</a>
+<h2 class="left"><span class="left_h2">Colors</span> Tutorial</h2>
+<a target="_top" href="http://www.w3schools.com/colors/default.asp">Colors HOME</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_names.asp">Color Names</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_hex.asp">Color Values</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_groups.asp">Color Groups</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_shades.asp">Color Shades</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_picker.asp">Color Picker</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_mixer.asp">Color Mixer</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_converter.asp" class="active">Color Converter</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_rgb.asp">Color RGB</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_hexadecimal.asp">Color HEX</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_hsl.asp">Color HSL</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_hwb.asp">Color HWB</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_cmyk.asp">Color CMYK</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_ncol.asp">Color NCol</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_palettes.asp">Color Palettes</a>
+<br>
+<h2 class="left"><span class="left_h2">Color</span> Standards</h2>
+<a target="_top" href="http://www.w3schools.com/colors/colors_fs595.asp">Colors USA</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_british.asp">Colors UK</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_australia.asp">Colors Australia</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_ral.asp">Colors RAL</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_nbs.asp">Colors NBS</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_ncs.asp">Colors NCS</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_x11.asp">Colors X11</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_crayola.asp">Colors Crayola</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_resene.asp">Colors Resene</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_xkcd.asp">Colors XKCD</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_brands.asp">Colors Brands</a>
+<a target="_top" href="http://www.w3schools.com/colors/colors_trends.asp">Colors Trends</a>
+<br>
+
+      <br><br>
+    </div>
+  </div>
+</div>
+<div class="w3-main w3-light-grey" id="belowtopnav" style="margin-left:220px;">
+  <div class="w3-row w3-white">
+    <div class="w3-col l10 m12" id="main">
+      <div id="mainLeaderboard" style="overflow:hidden;">
+        <!-- MainLeaderboard-->
+        <div id="div-gpt-ad-1422003450156-2">
+          <script type="text/javascript">googletag.cmd.push(function() { googletag.display('div-gpt-ad-1422003450156-2'); });</script>
+        <div id="google_ads_iframe_/16833175/MainLeaderboard_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/16833175/MainLeaderboard_0" title="3rd party ad content" name="google_ads_iframe_/16833175/MainLeaderboard_0" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:&quot;&lt;html&gt;&lt;body style=&#39;background:transparent&#39;&gt;&lt;/body&gt;&lt;/html&gt;&quot;" style="border: 0px; vertical-align: bottom;"></iframe></div><iframe id="google_ads_iframe_/16833175/MainLeaderboard_0__hidden__" title="" name="google_ads_iframe_/16833175/MainLeaderboard_0__hidden__" width="0" height="0" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:&quot;&lt;html&gt;&lt;body style=&#39;background:transparent&#39;&gt;&lt;/body&gt;&lt;/html&gt;&quot;" style="border: 0px; vertical-align: bottom; visibility: hidden; display: none;"></iframe></div>
+      </div>
+<h1>Color <span class="color_h1">Converter</span></h1>
+
+<div class="w3-clear nextprev">
+<a class="w3-left w3-btn" href="http://www.w3schools.com/colors/colors_mixer.asp">❮ Previous</a>
+<a class="w3-right w3-btn" href="http://www.w3schools.com/colors/colors_rgb.asp">Next ❯</a>
+</div>
+<br>
+<div class="w3-container w3-padding-large" style="background-color:#f1f1f1;border:1px solid #d3d3d3;">
+  <div class="w3-row">
+    <div class="w3-col l6">
+      <h2>Enter a Color:</h2>
+      <label><span class="w3-text-grey"><i>name, hex, rgb, hsl, hwb, cmyk, ncol:</i></span></label>
+      <input id="color01" type="text" value="rgb(0, 191, 255)" class="w3-input w3-border" oninput="convertColor()" onchange="validateColor()" onkeydown="submitOnEnter(event)">
+      <br>
+      <div class="resultStrings">
+        <div id="error01"></div>
+        <table id="resultTable" style="display: table;">
+        <tbody><tr><td id="helpname01">Name</td><td id="name01" style="font-style: normal; color: rgb(0, 0, 0);">DeepSkyBlue</td></tr>
+        <tr><td id="helprgb01"><a href="http://www.w3schools.com/colors/colors_rgb.asp?color=rgb(0,%20191,%20255)">Rgb</a></td><td id="rgb01">rgb(0, 191, 255)</td></tr>
+        <tr><td id="helphex01"><a href="http://www.w3schools.com/colors/colors_hexadecimal.asp?color=00bfff">Hex</a></td><td id="hex01">#00bfff</td></tr>
+        <tr><td id="helphsl01"><a href="http://www.w3schools.com/colors/colors_hsl.asp?color=hsl(195,%201,%200.5)">Hsl</a></td><td id="hsl01">hsl(195, 100%, 50%)</td></tr>
+        <tr><td id="helphwb01"><a href="http://www.w3schools.com/colors/colors_hwb.asp?color=hwb(195,%200,%200)">Hwb</a></td><td id="hwb01">hwb(195, 0%, 0%)</td></tr>
+        <tr><td id="helpcmyk01"><a href="http://www.w3schools.com/colors/colors_cmyk.asp?color=cmyk(1,%200.25,%200,%200)">Cmyk</a></td><td id="cmyk01">cmyk(100%, 25%, 0%, 0%)</td></tr>        
+        <tr><td id="helpncol01"><a href="http://www.w3schools.com/colors/colors_ncol.asp?color=C25,%200,%200">Ncol</a></td><td id="ncol01">C25, 0%, 0%</td></tr>
+        <!--<tr><td id="helpasterix" colspan="2">*Not a web standard.</td></tr>-->
+        </tbody></table>
+      </div>
+    </div>
+    <div class="w3-col l6" style="padding:40px 40px 10px 40px;">
+      <div id="behindresult01">
+      <div style="height: 294px; background-color: rgb(0, 191, 255);" id="result01">&nbsp;</div>
+      </div>
+    </div>
+  </div>
+  <div class="w3-row">
+    <div class="w3-col">
+      <div id="linktocp"><hr style="border-color:#dfdfdf"><p><a href="http://www.w3schools.com/colors/colors_picker.asp?color=00bfff">Use this color in our Color Picker</a></p></div>
+    </div>
+  </div>
+</div>
+<hr>
+<h2>W3Color JavaScript Library</h2>
+<p>The JavaScript library used in the color converter can be downloaded from</p>
+<p><strong><a target="_blank" href="http://www.w3schools.com/lib/w3color.js">http://www.w3schools.com/lib/w3color.js</a></strong></p>
+<br>
+<div class="w3-clear nextprev">
+<a class="w3-left w3-btn" href="http://www.w3schools.com/colors/colors_mixer.asp">❮ Previous</a>
+<a class="w3-right w3-btn" href="http://www.w3schools.com/colors/colors_rgb.asp">Next ❯</a>
+</div>
+<script>
+function convertColor() {
+    color = document.getElementById("color01").value;
+    if (color == "") {
+        validateColor();
+        return;
+    }
+    color = color.toLowerCase();
+    //document.getElementsByTagName("h1")[0].style.color = w3color(color).toRgbString();
+    c = w3color(color);
+    if (c.valid) {
+        document.getElementById("resultTable").style.display = "table";
+        document.getElementById("error01").innerHTML = "";
+        document.getElementById("result01").style.backgroundColor = c.toRgbaString();
+        if (c.toName() == "") {
+            document.getElementById("name01").style.fontStyle = "italic";
+            document.getElementById("name01").style.color = "#757575";
+            document.getElementById("name01").innerHTML = "no name";
+        } else {
+            document.getElementById("name01").style.fontStyle = "normal";
+            document.getElementById("name01").style.color = "#000000";
+            document.getElementById("name01").innerHTML = c.toName();
+        }
+        document.getElementById("helpname01").innerHTML = "Name";
+        document.getElementById("hex01").innerHTML = c.toHexString();
+        document.getElementById("helphex01").innerHTML = "<a href='colors_hexadecimal.asp?color=" + c.toHexString().substr(1) + "'>Hex</a>";
+        document.getElementById("cmyk01").innerHTML = c.toCmykString();
+        document.getElementById("helpcmyk01").innerHTML = "<a href='colors_cmyk.asp?color=" + c.toCmykStringDecimal() + "'>Cmyk</a>";
+        document.getElementById("helpncol01").innerHTML = "<a href='colors_ncol.asp?color=" + c.toNcolStringDecimal() + "'>Ncol</a>";
+        if ((color.indexOf("rgba") > -1 || color.indexOf("hsla") > -1 || color.indexOf("hwba") > -1 || color.indexOf("ncola")) > -1
+            || (color.indexOf("cmyk") == -1 && color.split(",").length == 4)
+            || (color.indexOf("cmyk") > -1 && color.split(",").length == 5)) {
+            document.getElementById("rgb01").innerHTML = c.toRgbaString();
+            document.getElementById("hsl01").innerHTML = c.toHslaString();
+            document.getElementById("hwb01").innerHTML = c.toHwbaString();
+            document.getElementById("ncol01").innerHTML = c.toNcolaString();
+            document.getElementById("helprgb01").innerHTML = "Rgba";
+            document.getElementById("helphsl01").innerHTML = "Hsla";
+            document.getElementById("helphwb01").innerHTML = "Hwba";
+        } else {
+            document.getElementById("rgb01").innerHTML = c.toRgbString();
+            document.getElementById("hsl01").innerHTML = c.toHslString();
+            document.getElementById("hwb01").innerHTML = c.toHwbString();
+            document.getElementById("ncol01").innerHTML = c.toNcolString();
+            document.getElementById("helprgb01").innerHTML = "<a href='colors_rgb.asp?color=" + c.toRgbString() + "'>Rgb</a>";
+            document.getElementById("helphsl01").innerHTML = "<a href='colors_hsl.asp?color=" + c.toHslStringDecimal() + "'>Hsl</a>";
+            document.getElementById("helphwb01").innerHTML = "<a href='colors_hwb.asp?color=" + c.toHwbStringDecimal() + "'>Hwb</a>";
+        }
+
+        document.getElementById("linktocp").innerHTML = "<hr style='border-color:#dfdfdf'><p><a href='colors_picker.asp?color=" + c.toHexString().substr(1) + "'>Use this color in our Color Picker</a></p>";
+        
+    } else {
+        validateColor();
+    }
+}
+function validateColor() {
+    var color, c, x, i, l;
+    color = document.getElementById("color01").value;
+    c = w3color(color);
+    if (color == "" || !c.valid) {
+        document.getElementById("result01").style.backgroundColor = "#f1f1f1";
+        document.getElementById("resultTable").style.display = "none";
+        document.getElementById("error01").innerHTML = "Not a legal color value";
+        document.getElementById("hex01").innerHTML = "";
+        document.getElementById("rgb01").innerHTML = "";
+        document.getElementById("hsl01").innerHTML = "";
+        document.getElementById("hwb01").innerHTML = "";
+        document.getElementById("ncol01").innerHTML = "";
+        document.getElementById("helpname01").innerHTML = "";
+        document.getElementById("helphex01").innerHTML = "";
+        document.getElementById("helprgb01").innerHTML = "";
+        document.getElementById("helphsl01").innerHTML = "";
+        document.getElementById("helphwb01").innerHTML = "";
+        document.getElementById("helpncol01").innerHTML = "";
+    } else {
+        document.getElementById("resultTable").style.display = "table";
+        document.getElementById("error01").innerHTML = "";
+    
+        convertColor();
+    }
+}
+function submitOnEnter(e) {
+    keyboardKey = e.which || e.keyCode;
+    if (keyboardKey == 13) {
+        validateColor();
+    }
+}
+
+convertColor();
+</script>
+
+</div>
+<div class="w3-col l2 m12" id="right">
+
+<div class="sidesection">
+<div id="skyscraper">
+<div id="div-gpt-ad-1422003450156-5">
+<script>
+ googletag.cmd.push(function() {
+ googletag.display('div-gpt-ad-1422003450156-5');
+ });
+ </script> 
+<div id="google_ads_iframe_/16833175/WideSkyScraper_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/16833175/WideSkyScraper_0" title="3rd party ad content" name="google_ads_iframe_/16833175/WideSkyScraper_0" width="160" height="600" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:&quot;&lt;html&gt;&lt;body style=&#39;background:transparent&#39;&gt;&lt;/body&gt;&lt;/html&gt;&quot;" style="border: 0px; vertical-align: bottom;"></iframe></div><iframe id="google_ads_iframe_/16833175/WideSkyScraper_0__hidden__" title="" name="google_ads_iframe_/16833175/WideSkyScraper_0__hidden__" width="0" height="0" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:&quot;&lt;html&gt;&lt;body style=&#39;background:transparent&#39;&gt;&lt;/body&gt;&lt;/html&gt;&quot;" style="border: 0px; vertical-align: bottom; visibility: hidden; display: none;"></iframe></div>
+</div>
+</div>
+
+<div class="sidesection">
+<h4><a href="http://www.w3schools.com/colors/colors_picker.asp">COLOR PICKER</a></h4>
+<a href="http://www.w3schools.com/colors/colors_picker.asp">
+<img src="./HTML Color Mixer_files/colorpicker.gif" alt="colorpicker"></a>
+</div>
+
+<div class="sidesection">
+<h4><a href="http://www.w3schools.com/howto/default.asp">LEARN MORE</a></h4>
+<p>
+<a href="http://www.w3schools.com/howto/howto_css_cards.asp">HTML Cards</a><br>
+<a href="http://www.w3schools.com/howto/howto_google_maps.asp">Google Maps</a><br>
+<a href="http://www.w3schools.com/howto/howto_css_animate_buttons.asp">Animated Buttons</a><br>
+<a href="http://www.w3schools.com/howto/howto_css_modals.asp">Modal Boxes</a><br>
+<a href="http://www.w3schools.com/howto/howto_css_modal_images.asp">Modal Images</a><br>
+<a href="http://www.w3schools.com/howto/howto_css_tooltip.asp">Tooltips</a><br>
+<a href="http://www.w3schools.com/howto/howto_css_loader.asp">Loaders</a><br>
+<a href="http://www.w3schools.com/howto/howto_js_filter_lists.asp">Filter List</a><br>
+<a href="http://www.w3schools.com/howto/howto_js_animate.asp">JS Animations</a><br>
+<a href="http://www.w3schools.com/howto/howto_js_progressbar.asp">Progress Bars</a><br>
+<a href="http://www.w3schools.com/howto/howto_js_dropdown.asp">Dropdowns</a><br>
+<a href="http://www.w3schools.com/howto/howto_js_slideshow.asp">Slideshow</a><br>
+<a href="http://www.w3schools.com/howto/howto_js_accordion.asp">Accordions</a><br>
+<a href="http://www.w3schools.com/howto/howto_js_sidenav.asp">Side Navigation</a><br>
+<a href="http://www.w3schools.com/howto/howto_js_topnav.asp">Top Navigation</a><br>
+<a href="http://www.w3schools.com/howto/howto_html_include.asp">HTML Includes</a><br>
+<a href="http://www.w3schools.com/howto/howto_js_tabs.asp">Tabs</a><br>
+</p>
+</div>
+
+<div class="sidesection">
+<h4>SHARE</h4>
+<div class="w3-text-grey sharethis">
+<script>
+<!--
+try{
+loc=location.pathname;
+if (loc.toUpperCase().indexOf(".ASP")<0) loc=loc+"default.asp";
+txt='<a href="http://www.facebook.com/sharer.php?u=http://www.w3schools.com'+loc+'" target="_blank" title="Facebook"><span class="fa fa-facebook-square fa-2x"></span></a>';
+txt=txt+'<a href="http://twitter.com/home?status=Currently reading http://www.w3schools.com'+loc+'" target="_blank" title="Twitter"><span class="fa fa-twitter-square fa-2x"></span></a>';
+txt=txt+'<a href="https://plus.google.com/share?url=http://www.w3schools.com'+loc+'" target="_blank" title="Google+"><span class="fa fa-google-plus-square fa-2x"></span></a>';
+document.write(txt);
+} catch(e) {}
+//-->
+</script><a href="http://www.facebook.com/sharer.php?u=http://www.w3schools.com/colors/colors_converter.asp" target="_blank" title="Facebook"><span class="fa fa-facebook-square fa-2x"></span></a><a href="http://twitter.com/home?status=Currently%20reading%20http://www.w3schools.com/colors/colors_converter.asp" target="_blank" title="Twitter"><span class="fa fa-twitter-square fa-2x"></span></a><a href="https://plus.google.com/share?url=http://www.w3schools.com/colors/colors_converter.asp" target="_blank" title="Google+"><span class="fa fa-google-plus-square fa-2x"></span></a>
+<br><br>
+<a href="javascript:void(0);" onclick="clickFBLike()" title="Like W3Schools on Facebook">
+<span class="fa fa-thumbs-o-up fa-2x"></span></a>
+<div id="fblikeframe" class="w3-modal">
+<div class="w3-modal-content w3-padding-64 w3-animate-zoom" id="popupDIV"></div>
+</div>
+</div>
+</div>
+
+<div class="sidesection">
+<h4><a target="_blank" href="http://www.w3schools.com/cert/default.asp">CERTIFICATES</a></h4>
+<p>HTML, CSS, JavaScript, PHP, jQuery, Bootstrap and XML.</p>
+<a target="_blank" href="http://www.w3schools.com/cert/default.asp" class="w3-btn w3-dark-grey">
+Read More »</a>
+</div>
+
+<div id="stickypos" class="sidesection" style="text-align:center;">
+<div id="stickyadcontainer">
+<div style="position:relative;margin:auto;">
+<div id="div-gpt-ad-1472547360578-0">
+<script>
+  if (Number(w3_getStyleValue(document.getElementById("main"), "height").replace("px", "")) > 2200) {
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1472547360578-0'); });
+    window.addEventListener("scroll", fix_stickyad);
+    window.addEventListener("resize", fix_stickyad);
+  }
+</script>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div id="footer" class="footer w3-container w3-white">
+
+<hr>
+<div style="overflow:auto">
+<!-- BottomMediumRectangle -->
+<div class="bottomad" id="div-gpt-ad-1422003450156-0">
+<script type="text/javascript">
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1422003450156-0'); });
+</script>
+<div id="google_ads_iframe_/16833175/BottomMediumRectangle_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/16833175/BottomMediumRectangle_0" title="3rd party ad content" name="google_ads_iframe_/16833175/BottomMediumRectangle_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:&quot;&lt;html&gt;&lt;body style=&#39;background:transparent&#39;&gt;&lt;/body&gt;&lt;/html&gt;&quot;" style="border: 0px; vertical-align: bottom;"></iframe></div><iframe id="google_ads_iframe_/16833175/BottomMediumRectangle_0__hidden__" title="" name="google_ads_iframe_/16833175/BottomMediumRectangle_0__hidden__" width="0" height="0" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:&quot;&lt;html&gt;&lt;body style=&#39;background:transparent&#39;&gt;&lt;/body&gt;&lt;/html&gt;&quot;" style="border: 0px; vertical-align: bottom; visibility: hidden; display: none;"></iframe></div>
+<!-- RightBottomMediumRectangle -->
+<div class="bottomad" id="div-gpt-ad-1422003450156-3">
+<script type="text/javascript">
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1422003450156-3'); });
+</script>
+<div id="google_ads_iframe_/16833175/RightBottomMediumRectangle_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/16833175/RightBottomMediumRectangle_0" title="3rd party ad content" name="google_ads_iframe_/16833175/RightBottomMediumRectangle_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:&quot;&lt;html&gt;&lt;body style=&#39;background:transparent&#39;&gt;&lt;/body&gt;&lt;/html&gt;&quot;" style="border: 0px; vertical-align: bottom;"></iframe></div><iframe id="google_ads_iframe_/16833175/RightBottomMediumRectangle_0__hidden__" title="" name="google_ads_iframe_/16833175/RightBottomMediumRectangle_0__hidden__" width="0" height="0" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:&quot;&lt;html&gt;&lt;body style=&#39;background:transparent&#39;&gt;&lt;/body&gt;&lt;/html&gt;&quot;" style="border: 0px; vertical-align: bottom; visibility: hidden; display: none;"></iframe></div>
+</div>
+
+<hr>
+<div class="w3-row w3-center w3-small">
+<div class="w3-col l3 m3 s12">
+<a href="javascript:void(0);" onclick="displayError();return false" style="white-space:nowrap;">REPORT ERROR</a>
+</div>
+<div class="w3-col l3 m3 s12">
+<a href="http://www.w3schools.com/colors/colors_converter.asp" target="_blank" onclick="printPage();return false;">PRINT PAGE</a>
+</div>
+<div class="w3-col l3 m3 s12">
+<a href="http://www.w3schools.com/forum/default.asp" target="_blank">FORUM</a>
+</div>
+<div class="w3-col l3 m3 s12">
+<a href="http://www.w3schools.com/about/default.asp" target="_top">ABOUT</a>
+</div>
+</div>
+<hr>
+<div class="w3-light-grey w3-padding w3-center" id="err_form" style="display:none;">
+<span onclick="this.parentElement.style.display=&#39;none&#39;" class="w3-closebtn">×</span>     
+<h2>Your Suggestion:</h2>
+<form>
+<div class="w3-group">      
+<label for="err_email">Your E-mail:</label>
+<input class="w3-input" type="text" style="width:100%" id="err_email" name="err_email">
+</div>
+<div class="w3-group">      
+<label for="err_email">Page address:</label>
+<input class="w3-input" type="text" style="width:100%" id="err_url" name="err_url" disabled="disabled">
+</div>
+<div class="w3-group">
+<label for="err_email">Description:</label>
+<textarea rows="10" class="w3-input" id="err_desc" name="err_desc" style="width:100%;"></textarea>
+</div>
+<div class="form-group">        
+<button type="button" onclick="sendErr()">Submit</button>
+</div>
+<br>
+</form>
+</div>
+<div class="w3-container w3-light-grey w3-padding" id="err_sent" style="display:none;">
+<span onclick="this.parentElement.style.display=&#39;none&#39;" class="w3-closebtn">×</span>     
+<h2>Thank You For Helping Us!</h2>
+<p>Your message has been sent to W3Schools.</p>
+</div>
+
+<div class="w3-row w3-center w3-small">
+<div class="w3-col l3 m6 s12">
+<div class="top10">
+<h4>Top 10 Tutorials</h4>
+<a href="http://www.w3schools.com/html/default.asp">HTML Tutorial</a><br>
+<a href="http://www.w3schools.com/css/default.asp">CSS Tutorial</a><br>
+<a href="http://www.w3schools.com/js/default.asp">JavaScript Tutorial</a><br>
+<a href="http://www.w3schools.com/w3css/default.asp">W3.CSS Tutorial</a><br>
+<a href="http://www.w3schools.com/bootstrap/default.asp">Bootstrap Tutorial</a><br>
+<a href="http://www.w3schools.com/sql/default.asp">SQL Tutorial</a><br>
+<a href="http://www.w3schools.com/php/default.asp">PHP Tutorial</a><br>
+<a href="http://www.w3schools.com/jquery/default.asp">jQuery Tutorial</a><br>
+<a href="http://www.w3schools.com/angular/default.asp">Angular Tutorial</a><br>
+<a href="http://www.w3schools.com/xml/default.asp">XML Tutorial</a><br>
+</div>
+</div>
+<div class="w3-col l3 m6 s12">
+<div class="top10">
+<h4>Top 10 References</h4>
+<a href="http://www.w3schools.com/tags/default.asp">HTML Reference</a><br>
+<a href="http://www.w3schools.com/cssref/default.asp">CSS Reference</a><br>
+<a href="http://www.w3schools.com/jsref/default.asp">JavaScript Reference</a><br>
+<a href="http://www.w3schools.com/w3css/w3css_references.asp">W3.CSS Reference</a><br>
+<a href="http://www.w3schools.com/browsers/default.asp">Browser Statistics</a><br>
+<a href="http://www.w3schools.com/php/php_ref_array.asp">PHP Reference</a><br>
+<a href="http://www.w3schools.com/colors/colors_names.asp">HTML Colors</a><br>
+<a href="http://www.w3schools.com/charsets/default.asp">HTML Character Sets</a><br>
+<a href="http://www.w3schools.com/jquery/jquery_ref_selectors.asp">jQuery Reference</a><br>
+<a href="http://www.w3schools.com/angular/angular_ref_directives.asp">AngularJS Reference</a><br>
+</div>
+</div>
+<div class="w3-col l3 m6 s12">
+<div class="top10">
+<h4>Top 10 Examples</h4>
+<a href="http://www.w3schools.com/html/html_examples.asp">HTML Examples</a><br>
+<a href="http://www.w3schools.com/css/css_examples.asp">CSS Examples</a><br>
+<a href="http://www.w3schools.com/js/js_examples.asp">JavaScript Examples</a><br>
+<a href="http://www.w3schools.com/w3css/w3css_examples.asp">W3.CSS Examples</a><br>
+<a href="http://www.w3schools.com/js/js_dom_examples.asp">HTML DOM Examples</a><br>
+<a href="http://www.w3schools.com/php/php_examples.asp">PHP Examples</a><br>
+<a href="http://www.w3schools.com/asp/asp_examples.asp">ASP Examples</a><br>
+<a href="http://www.w3schools.com/jquery/jquery_examples.asp">jQuery Examples</a><br>
+<a href="http://www.w3schools.com/angular/angular_examples.asp">Angular Examples</a><br>
+<a href="http://www.w3schools.com/xml/xml_examples.asp">XML Examples</a><br>
+</div>
+</div>
+<div class="w3-col l3 m6 s12">
+<div class="top10">
+<h4>Web Certificates</h4>
+<a href="http://www.w3schools.com/cert/default.asp">HTML Certificate</a><br>
+<a href="http://www.w3schools.com/cert/default.asp">HTML5 Certificate</a><br>
+<a href="http://www.w3schools.com/cert/default.asp">CSS Certificate</a><br>
+<a href="http://www.w3schools.com/cert/default.asp">JavaScript Certificate</a><br>
+<a href="http://www.w3schools.com/cert/default.asp">jQuery Certificate</a><br>
+<a href="http://www.w3schools.com/cert/default.asp">PHP Certificate</a><br>
+<a href="http://www.w3schools.com/cert/default.asp">Bootstrap Certificate</a><br>
+<a href="http://www.w3schools.com/cert/default.asp">XML Certificate</a><br>
+</div>
+</div>        
+</div>        
+
+<hr>
+<div class="w3-center w3-small w3-opacity">
+W3Schools is optimized for learning, testing, and training. Examples might be simplified to improve reading and basic understanding.
+Tutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant full correctness of all content.
+While using this site, you agree to have read and accepted our <a href="http://www.w3schools.com/about/about_copyright.asp">terms of use</a>,
+<a href="http://www.w3schools.com/about/about_privacy.asp">cookie and privacy policy</a>.
+<a href="http://www.w3schools.com/about/about_copyright.asp">Copyright 1999-2016</a> by Refsnes Data. All Rights Reserved.<br>
+ <a href="http://www.w3schools.com/w3css/">Powered by W3.CSS</a>.<br><br>
+<a href="http://www.w3schools.com/">
+<img style="width:150px;height:28px;border:0" src="./HTML Color Mixer_files/w3schoolscom_gray.gif" alt="W3Schools.com"></a>
+</div>
+<br><br>
+</div>
+
+</div>
+
+<script src="./HTML Color Mixer_files/w3schools_footer.js"></script>
+<script src="./HTML Color Mixer_files/element.js"></script>
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>  
+<![endif]-->
+
+
+ </body></html>
